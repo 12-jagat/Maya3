@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://maya3-1.onrender.com';
+const isLocalHost = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+const API_BASE_URL = import.meta.env.VITE_API_URL || (isLocalHost ? 'http://localhost:8000' : 'https://maya3-1.onrender.com');
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
