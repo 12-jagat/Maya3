@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: maya-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: python run_server.py
+    healthCheckPath: /health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: HOST
+        value: 0.0.0.0
+      - key: PDF_WORKERS
+        value: 8
+      - key: OCR_ENABLED
+        value: true
+      - key: PDF_DOWNLOAD_CONCURRENCY
+        value: 10
+      - key: PDF_MAX_SIZE_MB
+        value: 30
+      - key: GEMINI_MODEL
+        value: gemini-3.1-flash-lite
+      - key: FRONTEND_URL
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: ZILLIZ_URI
+        sync: false
+      - key: ZILLIZ_TOKEN
+        sync: false
